@@ -8,6 +8,7 @@ import java.util.Stack;
  * param 用来保存参数
  * operator 用来保存操作符
  * param_no 用来保存操作符所需参数的个数
+ * 已废弃！
  * @author LichKing
  */
 public class TokenizerInfo4HybridOperation {

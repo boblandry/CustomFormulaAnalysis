@@ -5,7 +5,7 @@ import java.util.Stack;
 import com.entity.Operator;
 
 /**
- * 混合运算的分析器 + - *  / % =
+ * 混合运算的分析器 + - *  / % 
  * @author LichKing
  *
  */
