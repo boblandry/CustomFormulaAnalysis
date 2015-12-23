@@ -14,7 +14,7 @@ public class Test4HybridOperation {
 		String formula = scan.nextLine();
 		Stack result = Tokenizer4HybridOperation.tokenizer(formula);
 		while(!result.isEmpty()){
-			System.out.print(result.pop().toString());
+			System.out.println(result.pop().toString());
 		}
 		
 	}

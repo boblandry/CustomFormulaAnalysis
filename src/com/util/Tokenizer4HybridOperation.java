@@ -16,11 +16,16 @@ public class Tokenizer4HybridOperation {
 		
 		String formula = obj.toString();
 		String s = "";
+		int count = 0;
 		for(int i=0;i<formula.length();i++){
 			char c = formula.charAt(i);
-			if(isnum(c)){
+			if(/*isnum(c)*/ isparam(c) || count>0){
 				s = s+c;
-				if( i+1 ==formula.length() || !isnum(formula.charAt(i+1))){
+				if(String.valueOf(c).equals("["))
+					count++;
+				if(String.valueOf(c).equals("]"))
+					count--;
+				if( i+1 ==formula.length() || (!isparam(formula.charAt(i+1)) && count==0)){
 					s_operand.push(s);
 					s = "";
 				}
@@ -67,9 +72,17 @@ public class Tokenizer4HybridOperation {
 		return s_operator;
 	}
 	
-	public static boolean isnum(char c){
+	private static boolean isnum(char c){
 		if(c>='0' && c<='9')
 			return true;
+		return false;
+	}
+	
+	private static boolean isparam(char c){
+		if((c>='0' && c<='9') || (c>='a' && c<='z') 
+				|| (c>='A' && c<='Z') || c=='[' || c==']' || c=='_' || c==','){
+			return true;
+		}
 		return false;
 	}
 }
