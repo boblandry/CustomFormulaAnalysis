@@ -9,7 +9,7 @@ public class TestCallFunction {
 		int a = 4;
 		int b = 2;
 		try {
-			Class c = Class.forName("function.Add");
+			Class c = Class.forName("com.function.Add");
 			Class param_c = Class.forName("java.lang.Integer");
 			Method method = c.getMethod("add", param_c,param_c);
 			Object result = method.invoke(c.newInstance(), a,b);
