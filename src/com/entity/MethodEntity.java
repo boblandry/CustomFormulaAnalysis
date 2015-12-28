@@ -2,7 +2,7 @@ package com.entity;
 
 import java.util.ArrayList;
 /**
- * ÓÃÀ´±£´æ ·½·¨ÃûºÍ²ÎÊıµÄÊı¾İ½á¹¹
+ * ç”¨æ¥ä¿å­˜ æ–¹æ³•åå’Œå‚æ•°   çš„æ•°æ®ç»“æ„
  * @author LichKing
  *
  */

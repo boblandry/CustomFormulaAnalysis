@@ -14,7 +14,7 @@ import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
 import com.entity.MethodEntity;
-import com.entity.Operator;
+import com.entity.Operator_1;
 
 public class CustomTokenizer {
 	/**
@@ -292,8 +292,8 @@ public class CustomTokenizer {
 	
 	
 	
-	public static final String[] SYMBOL = {Operator.DIV,Operator.LB,Operator.MOD,
-			Operator.MUL,Operator.PUL,Operator.RB,Operator.SUB,"[","]"};
+	public static final String[] SYMBOL = {Operator_1.DIV,Operator_1.LB,Operator_1.MOD,
+			Operator_1.MUL,Operator_1.PUL,Operator_1.RB,Operator_1.SUB,"[","]"};
 	public static final String M = "method";
 	public static final String NAME = "name";
 	public static final String P = "param";

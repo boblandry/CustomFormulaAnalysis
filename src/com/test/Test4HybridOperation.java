@@ -3,7 +3,7 @@ package com.test;
 import java.util.Scanner;
 import java.util.Stack;
 
-import com.entity.Operator;
+import com.entity.Operator_1;
 import com.util.Tokenizer4HybridOperation;
 
 public class Test4HybridOperation {

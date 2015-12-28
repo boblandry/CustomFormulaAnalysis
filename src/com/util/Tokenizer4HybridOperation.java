@@ -2,7 +2,7 @@ package com.util;
 
 import java.util.Stack;
 
-import com.entity.Operator;
+import com.entity.Operator_1;
 
 /**
  * 混合运算的分析器 + - *  / % 
@@ -34,25 +34,25 @@ public class Tokenizer4HybridOperation {
 				String str = String.valueOf(c);
 				if(s_operator.isEmpty()){
 					s_operator.push(str);
-				}else if(str.equals(Operator.LB)){
+				}else if(str.equals(Operator_1.LB)){
 					s_operator.push(str);
-				}else if(str.equals(Operator.RB)){
+				}else if(str.equals(Operator_1.RB)){
 					String temp = String.valueOf(s_operator.peek());
-					while(!temp.equals(Operator.LB)){
+					while(!temp.equals(Operator_1.LB)){
 						s_operand.push(temp);
 						s_operator.pop();
 						temp = (String) s_operator.peek();
 					}
 					s_operator.pop();
-				}else if(s_operator.peek().toString().equals(Operator.LB)){
+				}else if(s_operator.peek().toString().equals(Operator_1.LB)){
 					s_operator.push(str);
-				}else if(Operator.compare(str,s_operator.peek().toString()) == 1){
+				}else if(Operator_1.compare(str,s_operator.peek().toString()) == 1){
 					s_operator.push(str);
-				}else if(Operator.compare(str, s_operator.peek().toString()) != 1){
+				}else if(Operator_1.compare(str, s_operator.peek().toString()) != 1){
 					String temp = "";
-					while(!s_operator.isEmpty() && (Operator.compare(str, s_operator.peek().toString()) != 1 || 
-							(s_operator.peek().toString().equals(Operator.LB)
-							|| s_operator.peek().toString().equals(Operator.RB)))){
+					while(!s_operator.isEmpty() && (Operator_1.compare(str, s_operator.peek().toString()) != 1 || 
+							(s_operator.peek().toString().equals(Operator_1.LB)
+							|| s_operator.peek().toString().equals(Operator_1.RB)))){
 						temp = (String) s_operator.pop();
 						s_operand.push(temp);
 					}

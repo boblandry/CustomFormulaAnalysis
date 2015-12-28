@@ -1,37 +1,75 @@
 package com.entity;
 
-public class Operator{
-	public static final String PUL = "+";
-	public static final String SUB = "-";
-	public static final String MUL = "*";
-	public static final String DIV = "/";
-	public static final String MOD = "%";
-	public static final String LB = "(";
-	public static final String RB = ")";
-	
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.HashMap;
+import java.util.Map;
 
-	/**
-	 * op1>op2 return 1
-	 * op1<op2 return -1
-	 * op1=op2 return 0
-	 * @param op1
-	 * @param op2
-	 * @return
-	 */
-	public static int compare(String op1,String op2){
-		if(in_low(op1) && !in_low(op2)){
-			return -1;
-		}else if(!in_low(op1) && in_low(op2)){
-			return 1;
-		}else{
-			return 0;
+import com.log.Log;
+
+public class Operator {
+
+	private static final String OP_PATH = "operator";
+	private static Map<String,String> operator_map = null;
+	//private static String test = "";
+	private static Operator op;
+	
+	private Operator(){
+		init();
+	}
+	
+	public static Operator getInstance(){
+		if(op ==  null){
+			op = new Operator();
+			//test = "111111";
 		}
+		return op;
 	}
 	
-	private static boolean in_low(String op){
-		if(op.equals("+") || op.equals("-"))
-			return true;
-		return false;
+	private void init(){
+		File file = new File(OP_PATH);
+		if(!file.exists()){
+			Log.output_error("文件不存在");
+		}
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new FileReader(file));
+			String temp = null;
+			operator_map = new HashMap<String,String>();
+			while ((temp = reader.readLine()) != null){
+				String result[] = temp.split(";");
+				operator_map.put(result[0], result[1]);
+			}
+		} catch (IOException e) {
+			//Log.output_error("FileNotFoundException");
+			e.printStackTrace();
+		} finally{
+			try {
+				reader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+			
+	}
+	/*
+	public static String getTest() {
+		return test;
 	}
 
+	public static void setTest(String test) {
+		Operator.test = test;
+	}
+	*/
+
+	public static Map<String, String> getOperator_map() {
+		return operator_map;
+	}
+	 
+	
+	
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<function name="add">
+		<paramtype>java.lang.Integer</paramtype>
+		<paramtype>java.lang.Integer</paramtype>
+		<returntype>int</returntype>
+		<classpath>funtion.Add</classpath>
+	</function>
+	<function name="sub">
+		<paramtype>int</paramtype>
+		<paramtype>int</paramtype>
+		<returntype>int</returntype>
+		<classpath>function.Sub</classpath>
+	</function>
+	<function name="max">
+		<paramtype>int</paramtype>
+		<paramtype>int</paramtype>
+		<paramtype>int</paramtype>
+		<returntype>int</returntype>
+		<classpath>function.Max</classpath>
+	</function>
+</root>

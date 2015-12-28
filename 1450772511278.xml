@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+ <method name="add">
+  <param>
+   <method name="min">
+    <param>5</param>
+    <param>3</param>
+   </method>
+  </param>
+  <param>
+   <method name="max">
+    <param>2</param>
+    <param>8</param>
+   </method>
+  </param>
+  <param>
+   <method name="add">
+    <param>1</param>
+    <param>
+     <method name="doubleme">
+      <param>1</param>
+     </method>
+    </param>
+   </method>
+  </param>
+ </method>
+</root>
