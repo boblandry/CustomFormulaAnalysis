@@ -8,12 +8,12 @@ import java.util.Set;
 import com.entity.Dictionary;
 import com.entity.Operator;
 import com.entity.Token;
-import com.exception.FormulaGrammarException;
+import com.exception.FormulaErrorException;
 import com.log.Log;
 
 public class Tokenizer {
 
-	public static ArrayList<Token> tokenizer(String formula) throws FormulaGrammarException{
+	public static ArrayList<Token> tokenizer(String formula) throws FormulaErrorException{
 		formula = formula.trim();
 		ArrayList<Token> token_list = new ArrayList<Token>();
 		int state = 0;
@@ -45,10 +45,14 @@ public class Tokenizer {
 					}else if(isInChar(current)){
 						state = 1;
 						sb.append(current);
+						if(i == formula.length()-1){
+							Token token = setToken(sb.toString(), Dictionary.PARAM);
+							token_list.add(token);
+						}
 					}else{
-						Log.output_error("当前字符:"+current);
-						Log.output_error("上一个字符:"+String.valueOf(formula.charAt(i-1)));
-						throw new FormulaGrammarException();
+						//Log.output_error("当前字符:"+current);
+						//Log.output_error("上一个字符:"+String.valueOf(formula.charAt(i-1)));
+						throw new FormulaErrorException();
 					}
 					break;
 				case 1:
@@ -57,9 +61,9 @@ public class Tokenizer {
 						if(i == formula.length()-1){
 							Token token = setToken(sb.toString(), Dictionary.PARAM);
 							token_list.add(token);
-							i--;
-							state = 0;
-							sb.setLength(0);
+							//i--;
+							//state = 0;
+							//sb.setLength(0);
 						}
 					}else if(current.equals(Dictionary.LSB)){
 						Token token = setToken(sb.toString(), Dictionary.FUN);
@@ -77,13 +81,13 @@ public class Tokenizer {
 						state = 0;
 						sb.setLength(0);
 					}else{
-						Log.output_error("当前字符:"+current);
-						Log.output_error("上一个字符:"+String.valueOf(formula.charAt(i-1)));
-						throw new FormulaGrammarException();
+						//Log.output_error("当前字符:"+current);
+						//Log.output_error("上一个字符:"+String.valueOf(formula.charAt(i-1)));
+						throw new FormulaErrorException();
 					}
 					break;
 				default:
-					throw new FormulaGrammarException();
+					throw new FormulaErrorException();
 			}	
 		}
 		
