@@ -7,12 +7,11 @@ import com.entity.Tree;
 
 public class HCTSort {
 
-	public static Stack sort(ArrayList<Tree> HCParamList){
+	public static Stack<Tree> sort(ArrayList<Tree> HCParamList){
 		
-		Stack<Tree> s_operator = new Stack();
-		Stack<Tree> s_operand = new Stack();
+		Stack<Tree> s_operator = new Stack<Tree>();
+		Stack<Tree> s_operand = new Stack<Tree>();
 		
-		int count=0;
 		for(int i=0;i<HCParamList.size();i++){
 			Tree now_tree = HCParamList.get(i);
 			String type = now_tree.getType();
@@ -23,11 +22,11 @@ public class HCTSort {
 				}else if(now_tree.getType().equals(Dictionary.LRB)){
 					s_operator.push(now_tree);
 				}else if(now_tree.getType().equals(Dictionary.RRB)){
-					Tree temp = (Tree)s_operator.peek();
+					Tree temp = s_operator.peek();
 					while(!temp.getType().equals(Dictionary.LRB)){
 						s_operand.push(temp);
 						s_operator.pop();
-						temp = (Tree) s_operator.peek();
+						temp =  s_operator.peek();
 					}
 					s_operator.pop();
 				}else if(s_operator.peek().getType().equals(Dictionary.LRB)){
@@ -55,20 +54,31 @@ public class HCTSort {
 		return s_operator;
 	}
 	
-	
+	/**
+	 * 比较t1和t2中操作符的优先级
+	 * @param t1
+	 * @param t2
+	 * @return 
+	 */
 	private static int compare(Tree t1,Tree t2){
-		if(in_low(t1) && !in_low(t2)){
+		if(getPriority(t1) < getPriority(t2)){
 			return -1;
-		}else if(!in_low(t1) && in_low(t2)){
+		}else if(getPriority(t1) > getPriority(t2)){
 			return 1;
 		}else{
 			return 0;
 		}
 	}
 	
+	/**
+	 * 弃用
 	private static boolean in_low(Tree t){
 		if(t.getName().equals("+") || t.getName().equals("-"))
 			return true;
 		return false;
+	}
+	*/
+	private static int getPriority(Tree t){
+		return Priority.getPriority(t.getName());
 	}
 }

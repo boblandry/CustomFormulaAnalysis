@@ -9,7 +9,6 @@ import com.entity.Dictionary;
 import com.entity.Operator;
 import com.entity.Token;
 import com.exception.FormulaErrorException;
-import com.log.Log;
 
 public class Tokenizer {
 
@@ -98,7 +97,7 @@ public class Tokenizer {
 		Dictionary dic = Dictionary.getInstance();
 		Map<Integer,String> dictionary = dic.getDictionary();
 		Set<Integer> set = dictionary.keySet();
-		for(Iterator it=set.iterator();it.hasNext();){
+		for(Iterator<Integer> it=set.iterator();it.hasNext();){
 			int key = (Integer)it.next();
 			if(str.equals(dictionary.get(key))){
 				return key;
@@ -128,7 +127,7 @@ public class Tokenizer {
 		Operator op = Operator.getInstance();
 		Map<String,String> operator_map = op.getOperator_map();
 		Set<String> set = operator_map.keySet();
-		for(Iterator it=set.iterator();it.hasNext();){
+		for(Iterator<String> it=set.iterator();it.hasNext();){
 			String key = (String)it.next();
 			String value = operator_map.get(key);
 			if(current.equals(value)){

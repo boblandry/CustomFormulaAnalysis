@@ -35,6 +35,7 @@ public class TestParser {
 
 		Scanner scan = new Scanner(System.in);
 		String formula = scan.nextLine();
+		scan.close();
 		/*
 		Dictionary dic = Dictionary.getInstance();
 		Map<Integer,String> dictionary = dic.getDictionary();
@@ -46,7 +47,6 @@ public class TestParser {
 		System.out.println("---------------------------------------------");
 		*/
 		ArrayList<Token> list = new ArrayList<Token>();
-		Tree tree = new Tree();
 		list = Tokenizer.tokenizer(formula);
 		for(int i=0;i<list.size();i++){
 			Token token = list.get(i);
@@ -54,7 +54,7 @@ public class TestParser {
 		}
 		System.out.println("-----------------------------------------------");
 		
-		tree = Parser.parser(list);
+		Tree tree = Parser.parser(list);
 		
 		//System.out.println();
 		
