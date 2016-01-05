@@ -16,32 +16,46 @@ import com.util.Tokenizer;
 
 public class TestParser {
 
-	public static void main(String[] args) {
+	/**
+	 * add[min[5,3],max[2,8],add[1,doubleme[1]]]
+	 * (a+b)*c+add[1,2]
+	 * add[a+b,2]
+	 * add[a,sub[2+b,3]]
+	 * add[a,sub[2+b,3]+2]  ******
+	 * add[a+sub[2,b],1]
+	 * sub[2+b,4]+2
+	 * sub[2+4,1]+div[2,a]*c
+	 * mul[a,b]+find[t,g,b]%b
+	 * (mul[a,b]+find[t,g,b]%b)*fd
+	 * (mul[a,(c+b)/add[l,k]]+find[t,g,b]%b)*fd
+	 * @param args
+	 * @throws FormulaErrorException 
+	 */
+	public static void main(String[] args) throws FormulaErrorException {
 
 		Scanner scan = new Scanner(System.in);
 		String formula = scan.nextLine();
+		/*
 		Dictionary dic = Dictionary.getInstance();
 		Map<Integer,String> dictionary = dic.getDictionary();
 		Set<Integer> set = dictionary.keySet();
 		for(Iterator it=set.iterator();it.hasNext();){
 			int code = (Integer)it.next();
-			System.out.println(dictionary.get(code)+"\t"+code);
+			//System.out.println(dictionary.get(code)+"\t"+code);
 		}
 		System.out.println("---------------------------------------------");
+		*/
 		ArrayList<Token> list = new ArrayList<Token>();
 		Tree tree = new Tree();
-		try {
-			list = Tokenizer.tokenizer(formula);
-			tree = Parser.parser(list);
-		} catch (FormulaErrorException e) {
-			Log.output_error("¹«Ê½Óï·¨´íÎó");
-			e.printStackTrace();
-		}
+		list = Tokenizer.tokenizer(formula);
 		for(int i=0;i<list.size();i++){
 			Token token = list.get(i);
 			System.out.println(token.getToken_name()+"\t"+token.getToken_code());
 		}
 		System.out.println("-----------------------------------------------");
+		
+		tree = Parser.parser(list);
+		
 		//System.out.println();
 		
 		
