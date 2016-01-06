@@ -47,7 +47,7 @@ public class Function {
 	private void init(){
 		File file = new File(FUN_PATH);
 		if(!file.exists()){
-			Log.output_error("æ–‡ä»¶ä¸å­˜åœ¨");
+			Log.output_error("ÎÄ¼ş²»´æÔÚ");
 		}
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		try{

@@ -21,6 +21,7 @@ public class Parser {
 		ArrayList<Tree> HCParamList = getHCParamList(tree_list);
 		Tree result = generateHCExpression(HCParamList);
 		return result;
+		
 	}
 	
 	//传入表达式参数 生成表达式树
@@ -34,8 +35,8 @@ public class Parser {
 				Tree op1 = s_r.pop();
 				Tree op2 = s_r.pop();
 				ArrayList<Tree> child_tree_list = new ArrayList<Tree>();
-				child_tree_list.add(op1);
 				child_tree_list.add(op2);
+				child_tree_list.add(op1);
 				temp_tree.setChild_tree(child_tree_list);
 				s_r.push(temp_tree);
 			}else{
